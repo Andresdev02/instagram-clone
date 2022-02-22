@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="bg-gray-50 h-screen overflow-y-auto scrollbar-hide">
       <Head>
-        <title>Amazon 2.0</title>
+        <title>Instagram 2.0</title>
       </Head>
       <Header />
       <Feed />
