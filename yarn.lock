@@ -717,7 +717,7 @@
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.1.tgz"
   "version" "3.3.1"
 
-"next-auth@4.0.0-beta.7":
+"next-auth@^4.0.0-beta.7":
   "integrity" "sha512-bPoLak4MfmgrcLLaf26tEQttKJPBcP3KAtSXSo2xMhoG+PLnP9gwFmqLwFUX+FvVRf/iwuAUZjPRAqRQ9g3GOw=="
   "resolved" "https://registry.npmjs.org/next-auth/-/next-auth-4.0.0-beta.7.tgz"
   "version" "4.0.0-beta.7"
