@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import React from 'react'
 import {
   SearchIcon,
@@ -12,22 +12,31 @@ import {
 import { HomeIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/react'
 import { signIn, signOut } from 'next-auth/react'
+import { modalAtom } from '../atoms/modalAtom'
+import { useRecoilState } from 'recoil'
 
 const Header = () => {
   const { data: session } = useSession()
-  const router = useRouter();
+  const [open, setOpen] = useRecoilState(modalAtom)
+  const router = useRouter()
   return (
     <nav className="sticky top-0 z-50 border-b bg-white shadow-sm">
       <div className="mx-5 flex max-w-6xl justify-between xl:mx-auto">
         {/* Left */}
-        <div onClick={() => router.push('/')} className="relative hidden  w-24 cursor-pointer lg:inline-grid">
+        <div
+          onClick={() => router.push('/')}
+          className="relative hidden  w-24 cursor-pointer lg:inline-grid"
+        >
           <Image
             src="https://links.papareact.com/ocw"
             objectFit="contain"
             layout="fill"
           />
         </div>
-        <div className="relative  w-10 cursor-pointer lg:hidden" onClick={() => router.push('/')}>
+        <div
+          className="relative  w-10 cursor-pointer lg:hidden"
+          onClick={() => router.push('/')}
+        >
           <Image
             src="https://links.papareact.com/jjm"
             objectFit="contain"
@@ -51,7 +60,7 @@ const Header = () => {
 
         {/* Right */}
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="navBtn" onClick={() => router.push('/')}/>
+          <HomeIcon className="navBtn" onClick={() => router.push('/')} />
           <MenuIcon className="h-6 cursor-pointer md:hidden" />
 
           {session ? (
@@ -62,7 +71,10 @@ const Header = () => {
                   3
                 </div>
               </div>
-              <PlusCircleIcon className="navBtn" />
+              <PlusCircleIcon
+                className="navBtn"
+                onClick={() => setOpen(true)}
+              />
               <UserGroupIcon className="navBtn" />
               <HeartIcon className="navBtn" />
               <img
