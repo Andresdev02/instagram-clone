@@ -121,7 +121,7 @@ function Post({ post, id }) {
 
       {/* COMMENTS */}
       {comments.length > 0 && (
-        <div className="scrollbar-hidden ml-10 max-h-20 overflow-y-scroll ">
+        <div className="scrollbar-hide ml-10 max-h-20 overflow-y-scroll ">
           {comments.map((comment) => (
             <div key={comment.id} className="mb-3 flex items-center space-x-2">
               <img
