@@ -50,13 +50,13 @@ function Post({ post, id }) {
       ),
     [db, id]
   )
-  useEffect(
-    () =>
+  useEffect(() => {
+    if (session) {
       setHasLiked(
-        likes.findIndex((like) => like.id === session.user.uid) !== -1
-      ),
-    [likes]
-  )
+        likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+      )
+    }
+  }, [likes])
   const likePost = async () => {
     if (hasLiked) {
       await deleteDoc(doc(db, 'posts', id, 'likes', session.user.uid))
@@ -112,7 +112,9 @@ function Post({ post, id }) {
 
       {/* CAPTION */}
       <p className="truncate p-5">
-        {likes.length > 0 && <p className="font-bold mb-1">{likes.length} likes</p>}
+        {likes.length > 0 && (
+          <p className="mb-1 font-bold">{likes.length} likes</p>
+        )}
         <span className="mr-1 font-bold">{username} </span>
         {caption}
       </p>
