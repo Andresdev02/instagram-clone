@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import {useRouter} from 'next/router'
 import React from 'react'
 import {
   SearchIcon,
@@ -14,19 +15,19 @@ import { signIn, signOut } from 'next-auth/react'
 
 const Header = () => {
   const { data: session } = useSession()
-
+  const router = useRouter();
   return (
     <nav className="sticky top-0 z-50 border-b bg-white shadow-sm">
       <div className="mx-5 flex max-w-6xl justify-between xl:mx-auto">
         {/* Left */}
-        <div className="relative hidden  w-24 cursor-pointer lg:inline-grid">
+        <div onClick={() => router.push('/')} className="relative hidden  w-24 cursor-pointer lg:inline-grid">
           <Image
             src="https://links.papareact.com/ocw"
             objectFit="contain"
             layout="fill"
           />
         </div>
-        <div className="relative  w-10 cursor-pointer lg:hidden">
+        <div className="relative  w-10 cursor-pointer lg:hidden" onClick={() => router.push('/')}>
           <Image
             src="https://links.papareact.com/jjm"
             objectFit="contain"
@@ -50,7 +51,7 @@ const Header = () => {
 
         {/* Right */}
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="navBtn" />
+          <HomeIcon className="navBtn" onClick={() => router.push('/')}/>
           <MenuIcon className="h-6 cursor-pointer md:hidden" />
 
           {session ? (
